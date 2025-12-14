@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BubbleComponent } from './bubble.component';
@@ -11,7 +12,7 @@ describe('BubbleComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [BubbleComponent],
-      providers: [SanitizeHtmlPipe],
+      providers: [SanitizeHtmlPipe, provideZonelessChangeDetection()],
     })
       .compileComponents();
   });

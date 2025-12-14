@@ -1,10 +1,10 @@
 import {
-  Component, ElementRef, HostListener, Input, OnDestroy, OnInit,
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, inject, Input, OnDestroy, OnInit,
 } from '@angular/core';
 import { EditorView } from 'prosemirror-view';
 import { Observable, Subscription } from 'rxjs';
 
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { NgxEditorService } from '../../../editor.service';
 import { TBHeadingItems } from '../../../types';
 import { MenuService } from '../menu.service';
@@ -14,9 +14,15 @@ import { ToggleCommands } from '../MenuCommands';
   selector: 'ngx-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss'],
-  imports: [AsyncPipe, CommonModule],
+  imports: [AsyncPipe],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DropdownComponent implements OnInit, OnDestroy {
+  private ngxeService = inject(NgxEditorService);
+  private menuService = inject(MenuService);
+  private el = inject(ElementRef);
+  private cdr = inject(ChangeDetectorRef);
+
   private editorView: EditorView;
   private updateSubscription: Subscription;
 
@@ -28,12 +34,6 @@ export class DropdownComponent implements OnInit, OnDestroy {
   disabledItems: string[] = [];
   activeItem: string | null;
 
-  constructor(
-    private ngxeService: NgxEditorService,
-    private menuService: MenuService,
-    private el: ElementRef,
-  ) {}
-
   get isSelected(): boolean {
     return Boolean(this.activeItem || this.isDropdownOpen);
   }
@@ -42,7 +42,8 @@ export class DropdownComponent implements OnInit, OnDestroy {
     return this.disabledItems.length === this.items.length;
   }
 
-  @HostListener('document:mousedown', ['$event.target']) onDocumentClick(target: Node): void {
+  @HostListener('document:mousedown', ['$event']) onDocumentClick(e: MouseEvent): void {
+    const target = e.target as Node;
     if (!this.el.nativeElement.contains(target) && this.isDropdownOpen) {
       this.isDropdownOpen = false;
     }
@@ -125,6 +126,7 @@ export class DropdownComponent implements OnInit, OnDestroy {
     } else {
       this.activeItem = null;
     }
+    this.cdr.markForCheck();
   };
 
   ngOnInit(): void {

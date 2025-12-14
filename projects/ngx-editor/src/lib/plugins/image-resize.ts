@@ -47,10 +47,10 @@ class ImageRezieView implements NodeView {
   }
 
   private setNodeAttributes(attrs: Record<string, string>): void {
-    this.imageComponentRef.instance.src = attrs['src'];
-    this.imageComponentRef.instance.alt = attrs['alt'];
-    this.imageComponentRef.instance.title = attrs['title'];
-    this.imageComponentRef.instance.outerWidth = attrs['width'];
+    this.imageComponentRef.instance.src.set(attrs['src']);
+    this.imageComponentRef.instance.alt.set(attrs['alt'] ?? '');
+    this.imageComponentRef.instance.title.set(attrs['title'] ?? '');
+    this.imageComponentRef.instance.outerWidth.set(attrs['width'] ?? '');
   }
 
   handleResize = (): void => {
@@ -63,7 +63,7 @@ class ImageRezieView implements NodeView {
 
     const transaction = tr.setNodeMarkup(this.getPos(), undefined, {
       ...this.node.attrs,
-      width: this.imageComponentRef.instance.outerWidth,
+      width: this.imageComponentRef.instance.outerWidth(),
     });
 
     const resolvedPos = transaction.doc.resolve(this.getPos());
@@ -94,11 +94,11 @@ class ImageRezieView implements NodeView {
   }
 
   selectNode(): void {
-    this.imageComponentRef.instance.selected = true;
+    this.imageComponentRef.instance.selected.set(true);
   }
 
   deselectNode(): void {
-    this.imageComponentRef.instance.selected = false;
+    this.imageComponentRef.instance.selected.set(false);
   }
 
   destroy(): void {

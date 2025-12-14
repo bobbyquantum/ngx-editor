@@ -1,4 +1,4 @@
-import { DebugElement } from '@angular/core';
+import { ChangeDetectorRef, DebugElement, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -16,6 +16,7 @@ import { ToggleCommandComponent } from './toggle-command/toggle-command.componen
 describe('NgxEditorMenuComponent', () => {
   let component: NgxEditorMenuComponent;
   let fixture: ComponentFixture<NgxEditorMenuComponent>;
+  let cdr: ChangeDetectorRef;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -30,6 +31,7 @@ describe('NgxEditorMenuComponent', () => {
       ],
       providers: [
         MenuService,
+        provideZonelessChangeDetection(),
       ],
     });
 
@@ -40,6 +42,7 @@ describe('NgxEditorMenuComponent', () => {
     fixture = TestBed.createComponent(NgxEditorMenuComponent);
     component = fixture.componentInstance;
     component.editor = new Editor();
+    cdr = fixture.debugElement.injector.get(ChangeDetectorRef);
     fixture.detectChanges();
   });
 
@@ -56,16 +59,20 @@ describe('NgxEditorMenuComponent', () => {
     expect(compiled.query(By.css('.NgxEditor__MenuBar'))).toBeTruthy();
   });
 
-  it('should position the dropdown correctly', () => {
+  it('should position the dropdown correctly', async () => {
     const compiled: DebugElement = fixture.debugElement;
     expect(compiled.query(By.css('.NgxEditor__MenuBar.NgxEditor__MenuBar--Reverse'))).toBeFalsy();
 
     component.dropdownPlacement = 'top';
+    cdr.markForCheck();
     fixture.detectChanges();
+    await fixture.whenStable();
     expect(compiled.query(By.css('.NgxEditor__MenuBar.NgxEditor__MenuBar--Reverse'))).toBeTruthy();
 
     component.dropdownPlacement = 'bottom';
+    cdr.markForCheck();
     fixture.detectChanges();
+    await fixture.whenStable();
     expect(compiled.query(By.css('.NgxEditor__MenuBar.NgxEditor__MenuBar--Reverse'))).toBeFalsy();
   });
 });

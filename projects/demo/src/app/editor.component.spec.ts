@@ -1,4 +1,4 @@
-import { DebugElement } from '@angular/core';
+import { DebugElement, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -20,6 +20,7 @@ describe('EditorComponent', () => {
         NgxEditorModule,
         AppCustomMenuComponent,
       ],
+      providers: [provideZonelessChangeDetection()],
     }).compileComponents();
   });
 

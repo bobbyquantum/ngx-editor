@@ -1,6 +1,6 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input, OnInit, TemplateRef } from '@angular/core';
 
-import { CommonModule } from '@angular/common';
+import { KeyValuePipe, NgTemplateOutlet } from '@angular/common';
 import { NgxEditorError } from 'ngx-editor/utils';
 import Editor from '../../Editor';
 import { Toolbar, ToolbarDropdown, ToolbarItem, ToolbarLink, ToolbarLinkOptions } from '../../types';
@@ -70,7 +70,8 @@ const DEFAULT_COLOR_PRESETS = [
   styleUrls: ['./menu.component.scss'],
   providers: [MenuService],
   imports: [
-    CommonModule,
+    KeyValuePipe,
+    NgTemplateOutlet,
     ColorPickerComponent,
     DropdownComponent,
     ToggleCommandComponent,
@@ -78,8 +79,11 @@ const DEFAULT_COLOR_PRESETS = [
     LinkComponent,
     ImageComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgxEditorMenuComponent implements OnInit {
+  private menuService = inject(MenuService);
+
   @Input() toolbar: Toolbar = TOOLBAR_MINIMAL;
   @Input() colorPresets: string[] = DEFAULT_COLOR_PRESETS;
   @Input() disabled = false;
@@ -116,8 +120,6 @@ export class NgxEditorMenuComponent implements OnInit {
   iconContainerClass = ['NgxEditor__MenuItem', 'NgxEditor__MenuItem--IconContainer'];
   dropdownContainerClass = ['NgxEditor__Dropdown'];
   seperatorClass = ['NgxEditor__Seperator'];
-
-  constructor(private menuService: MenuService) {}
 
   get presets(): string[][] {
     const col = 8;

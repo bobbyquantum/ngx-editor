@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DropdownComponent } from './dropdown.component';
@@ -13,7 +14,7 @@ describe('DropdownComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [DropdownComponent],
-      providers: [MenuService],
+      providers: [MenuService, provideZonelessChangeDetection()],
     })
       .compileComponents();
   });

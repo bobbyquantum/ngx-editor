@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ImageViewComponent } from './image-view.component';
@@ -9,6 +10,7 @@ describe('ImageComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [ImageViewComponent],
+      providers: [provideZonelessChangeDetection()],
     });
 
     await TestBed.compileComponents();

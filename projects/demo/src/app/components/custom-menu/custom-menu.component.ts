@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, Input, OnInit } from '@angular/core';
 import { setBlockType } from 'prosemirror-commands';
 import { EditorState, Transaction } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
@@ -13,8 +13,11 @@ import { isNodeActive } from 'ngx-editor/helpers';
   styleUrls: ['./custom-menu.component.scss'],
   standalone: true,
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppCustomMenuComponent implements OnInit {
+  private cdr = inject(ChangeDetectorRef);
+
   @Input() editor: Editor;
   isActive = false;
   isDisabled = false;
@@ -40,6 +43,7 @@ export class AppCustomMenuComponent implements OnInit {
     const { schema } = state;
     this.isActive = isNodeActive(state, schema.nodes['code_mirror']);
     this.isDisabled = !this.execute(state, null); // returns true if executable
+    this.cdr.markForCheck();
   };
 
   ngOnInit(): void {

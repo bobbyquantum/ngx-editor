@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Editor } from 'ngx-editor';
 
@@ -12,6 +13,7 @@ describe('AppCustomMenuComponent', () => {
       imports: [
         AppCustomMenuComponent,
       ],
+      providers: [provideZonelessChangeDetection()],
     });
 
     await TestBed.compileComponents();

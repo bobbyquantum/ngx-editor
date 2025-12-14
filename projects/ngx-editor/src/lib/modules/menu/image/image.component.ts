@@ -1,5 +1,5 @@
-import { Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, inject, OnDestroy, OnInit } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { uniq } from 'ngx-editor/utils';
 import { NodeSelection } from 'prosemirror-state';
@@ -16,9 +16,15 @@ import { Image as ImageCommand } from '../MenuCommands';
   selector: 'ngx-image',
   templateUrl: './image.component.html',
   styleUrls: ['./image.component.scss'],
-  imports: [AsyncPipe, SanitizeHtmlPipe, ReactiveFormsModule, CommonModule],
+  imports: [AsyncPipe, SanitizeHtmlPipe, ReactiveFormsModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImageComponent implements OnInit, OnDestroy {
+  private el = inject(ElementRef);
+  private ngxeService = inject(NgxEditorService);
+  private menuService = inject(MenuService);
+  private cdr = inject(ChangeDetectorRef);
+
   showPopup = false;
   isActive = false;
   private componentId = uniq();
@@ -34,12 +40,6 @@ export class ImageComponent implements OnInit, OnDestroy {
   });
 
   private editorView: EditorView;
-
-  constructor(
-    private el: ElementRef,
-    private ngxeService: NgxEditorService,
-    private menuService: MenuService,
-  ) {}
 
   get icon(): HTML {
     return this.ngxeService.getIcon('image');
@@ -109,6 +109,7 @@ export class ImageComponent implements OnInit, OnDestroy {
   private update = (view: EditorView) => {
     const { state } = view;
     this.isActive = ImageCommand.isActive(state);
+    this.cdr.markForCheck();
   };
 
   insertLink(e: MouseEvent): void {

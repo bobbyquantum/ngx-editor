@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -13,6 +13,7 @@ describe('NgxEditorComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [NgxEditorComponent],
+      providers: [provideZonelessChangeDetection()],
     });
 
     await TestBed.compileComponents();
@@ -90,6 +91,7 @@ describe('NgxEditorComponent: Reactive Forms API', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [ReactiveFormsModule, TestComponent, NgxEditorComponent],
+      providers: [provideZonelessChangeDetection()],
     });
 
     await TestBed.compileComponents();

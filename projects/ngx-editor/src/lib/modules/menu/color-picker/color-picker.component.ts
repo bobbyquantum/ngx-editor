@@ -1,9 +1,9 @@
 import {
-  Component, ElementRef, HostListener, Input, OnDestroy, OnInit,
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, inject, Input, OnDestroy, OnInit,
 } from '@angular/core';
 import { EditorView } from 'prosemirror-view';
 import { Observable, Subscription } from 'rxjs';
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { NgxEditorService } from '../../../editor.service';
 import { SanitizeHtmlPipe } from '../../../pipes/sanitize/sanitize-html.pipe';
@@ -17,17 +17,17 @@ type Command = typeof TextColor | typeof TextBackgroundColor;
   selector: 'ngx-color-picker',
   templateUrl: './color-picker.component.html',
   styleUrls: ['./color-picker.component.scss'],
-  imports: [AsyncPipe, CommonModule, SanitizeHtmlPipe],
+  imports: [AsyncPipe, SanitizeHtmlPipe],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ColorPickerComponent implements OnInit, OnDestroy {
+  private el = inject(ElementRef);
+  private menuService = inject(MenuService);
+  private ngxeService = inject(NgxEditorService);
+  private cdr = inject(ChangeDetectorRef);
+
   @Input() presets: string[][];
   @Input() type: string;
-
-  constructor(
-    private el: ElementRef,
-    private menuService: MenuService,
-    private ngxeService: NgxEditorService,
-  ) {}
 
   get title(): Observable<string> {
     return this.getLabel(this.type === 'text_color' ? 'text_color' : 'background_color');
@@ -152,6 +152,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy {
     if (this.isActive) {
       this.activeColors = this.command.getActiveColors(state);
     }
+    this.cdr.markForCheck();
   };
 
   getLabel(key: string): Observable<string> {

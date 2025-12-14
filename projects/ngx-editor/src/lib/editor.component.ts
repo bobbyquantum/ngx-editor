@@ -1,8 +1,11 @@
 import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
   forwardRef,
+  inject,
   Injector,
   Input,
   OnChanges,
@@ -36,13 +39,13 @@ import { HTML, isHtml } from './trustedTypesUtil';
     },
   ],
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgxEditorComponent implements ControlValueAccessor, OnInit, OnChanges, OnDestroy {
-  constructor(
-    private renderer: Renderer2,
-    private injector: Injector,
-    private elementRef: ElementRef<HTMLElement>,
-  ) { }
+  private renderer = inject(Renderer2);
+  private injector = inject(Injector);
+  private elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+  private cdr = inject(ChangeDetectorRef);
 
   @ViewChild('ngxEditor', { static: true }) private ngxEditor: ElementRef;
 

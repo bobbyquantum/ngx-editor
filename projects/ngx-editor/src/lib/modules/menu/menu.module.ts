@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -16,7 +15,6 @@ import { InsertCommandComponent } from './insert-command/insert-command.componen
 
 @NgModule({
   imports: [
-    CommonModule,
     ReactiveFormsModule,
     // pipes
     SanitizeHtmlPipe,

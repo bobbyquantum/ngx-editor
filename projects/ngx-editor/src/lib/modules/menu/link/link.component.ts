@@ -1,7 +1,7 @@
 import {
-  Component, ElementRef, HostListener, Input, OnDestroy, OnInit,
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, inject, Input, OnDestroy, OnInit,
 } from '@angular/core';
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { uniq } from 'ngx-editor/utils';
 import { EditorView } from 'prosemirror-view';
@@ -25,9 +25,15 @@ const DEFAULT_LINK_OPTIONS: LinkOptions = {
   selector: 'ngx-link',
   templateUrl: './link.component.html',
   styleUrls: ['./link.component.scss'],
-  imports: [AsyncPipe, CommonModule, ReactiveFormsModule, SanitizeHtmlPipe],
+  imports: [AsyncPipe, ReactiveFormsModule, SanitizeHtmlPipe],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LinkComponent implements OnInit, OnDestroy {
+  private el = inject(ElementRef);
+  private ngxeService = inject(NgxEditorService);
+  private menuService = inject(MenuService);
+  private cdr = inject(ChangeDetectorRef);
+
   @Input({
     transform: (value: Partial<LinkOptions>) => ({ ...DEFAULT_LINK_OPTIONS, ...value }),
   })
@@ -41,12 +47,6 @@ export class LinkComponent implements OnInit, OnDestroy {
 
   private editorView: EditorView;
   private updateSubscription: Subscription;
-
-  constructor(
-    private el: ElementRef,
-    private ngxeService: NgxEditorService,
-    private menuService: MenuService,
-  ) {}
 
   get icon(): HTML {
     return this.ngxeService.getIcon(this.isActive ? 'unlink' : 'link');
@@ -129,6 +129,7 @@ export class LinkComponent implements OnInit, OnDestroy {
     const { state } = view;
     this.isActive = LinkCommand.isActive(state, { strict: false });
     this.canExecute = LinkCommand.canExecute(state);
+    this.cdr.markForCheck();
   };
 
   insertLink(e: MouseEvent): void {

@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { EditorView } from 'prosemirror-view';
 import { Observable, Subscription } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
@@ -15,8 +15,13 @@ import { ToggleCommands } from '../MenuCommands';
   templateUrl: './toggle-command.component.html',
   styleUrls: ['./toggle-command.component.scss'],
   imports: [AsyncPipe, SanitizeHtmlPipe],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToggleCommandComponent implements OnInit, OnDestroy {
+  private ngxeService = inject(NgxEditorService);
+  private menuService = inject(MenuService);
+  private cdr = inject(ChangeDetectorRef);
+
   @Input() toolbarItem: ToolbarItem;
 
   get name(): TBItems {
@@ -28,11 +33,6 @@ export class ToggleCommandComponent implements OnInit, OnDestroy {
   isActive = false;
   disabled = false;
   private updateSubscription: Subscription;
-
-  constructor(
-    private ngxeService: NgxEditorService,
-    private menuService: MenuService,
-  ) {}
 
   toggle(): void {
     const { state, dispatch } = this.editorView;
@@ -59,6 +59,7 @@ export class ToggleCommandComponent implements OnInit, OnDestroy {
     const command = ToggleCommands[this.name];
     this.isActive = command.isActive(state);
     this.disabled = !command.canExecute(state);
+    this.cdr.markForCheck();
   };
 
   getTitle(name: string): Observable<string> {

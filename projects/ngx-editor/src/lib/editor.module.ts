@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 
 import { defaults as defaultLocals } from './Locals';
@@ -23,7 +22,6 @@ const defaultConfig: NgxEditorConfig = {
 
 @NgModule({
   imports: [
-    CommonModule,
     MenuModule,
     NgxEditorComponent,
     ImageViewComponent,

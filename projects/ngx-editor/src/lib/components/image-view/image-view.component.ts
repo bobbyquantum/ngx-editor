@@ -1,6 +1,5 @@
-import { CommonModule } from '@angular/common';
 import {
-  Component, ElementRef, EventEmitter, Input, Output, ViewChild,
+  ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Output, signal, viewChild,
 } from '@angular/core';
 import { EditorView } from 'prosemirror-view';
 
@@ -8,19 +7,21 @@ import { EditorView } from 'prosemirror-view';
   selector: 'ngx-image-view',
   templateUrl: './image-view.component.html',
   styleUrls: ['./image-view.component.scss'],
-  imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImageViewComponent {
-  @Input() src: string;
-  @Input() alt = '';
-  @Input() title = '';
-  @Input() outerWidth = '';
-  @Input() selected = false;
-  @Input() view: EditorView;
+  // Use signals for reactive state in zoneless mode
+  src = signal('');
+  alt = signal('');
+  title = signal('');
+  outerWidth = signal('');
+  selected = signal(false);
+
+  view: EditorView;
 
   @Output() imageResize = new EventEmitter();
 
-  @ViewChild('imgEl', { static: true }) imgEl: ElementRef;
+  imgEl = viewChild.required<ElementRef>('imgEl');
 
   startResizing(e: MouseEvent, direction: string): void {
     e.preventDefault();
@@ -29,7 +30,7 @@ export class ImageViewComponent {
 
   resizeImage(evt: MouseEvent, direction: string): void {
     const startX = evt.pageX;
-    const startWidth = this.imgEl.nativeElement.clientWidth;
+    const startWidth = this.imgEl().nativeElement.clientWidth;
 
     const isLeftResize = direction === 'left';
 
@@ -47,7 +48,7 @@ export class ImageViewComponent {
         return;
       }
 
-      this.outerWidth = `${computedWidth}px`;
+      this.outerWidth.set(`${computedWidth}px`);
     };
 
     const onMouseUp = (e: MouseEvent) => {

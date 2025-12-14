@@ -1,9 +1,9 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { SafeHtml } from '@angular/platform-browser';
 import { EditorView } from 'prosemirror-view';
 import { Observable, Subscription } from 'rxjs';
 
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import Editor from '../../../Editor';
 import { NgxEditorService } from '../../../editor.service';
 import { SanitizeHtmlPipe } from '../../../pipes/sanitize/sanitize-html.pipe';
@@ -14,14 +14,14 @@ import { ToggleCommands } from '../MenuCommands';
   selector: 'ngx-bubble',
   templateUrl: './bubble.component.html',
   styleUrls: ['./bubble.component.scss'],
-  imports: [AsyncPipe, CommonModule],
+  imports: [AsyncPipe],
   providers: [SanitizeHtmlPipe],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BubbleComponent implements OnInit, OnDestroy {
-  constructor(
-    private sanitizeHTML: SanitizeHtmlPipe,
-    private ngxeService: NgxEditorService,
-  ) {}
+  private sanitizeHTML = inject(SanitizeHtmlPipe);
+  private ngxeService = inject(NgxEditorService);
+  private cdr = inject(ChangeDetectorRef);
 
   private get view(): EditorView {
     return this.editor.view;
@@ -99,6 +99,7 @@ export class BubbleComponent implements OnInit, OnDestroy {
         this.execulableItems.push(toolbarItem);
       }
     });
+    this.cdr.markForCheck();
   }
 
   ngOnInit(): void {

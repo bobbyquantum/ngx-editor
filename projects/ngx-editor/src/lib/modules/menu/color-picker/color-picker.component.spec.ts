@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ColorPickerComponent } from './color-picker.component';
@@ -17,7 +18,7 @@ describe('ColorPickerComponent', () => {
         ColorPickerComponent,
         SanitizeHtmlPipe,
       ],
-      providers: [MenuService],
+      providers: [MenuService, provideZonelessChangeDetection()],
     });
 
     await TestBed.compileComponents();
