@@ -2,7 +2,7 @@ name: Github Pages
 
 on:
   push:
-    branches: master
+    branches: main
 
 env:
   NODE_VERSION: 20
