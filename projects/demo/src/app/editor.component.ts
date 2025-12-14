@@ -10,7 +10,7 @@ import {
   NgxEditorMenuComponent,
   Toolbar,
   Validators,
-} from 'ngx-editor';
+} from '@bobbyquantum/ngx-editor';
 
 import { AppCustomMenuComponent } from './components/custom-menu/custom-menu.component';
 import jsonDoc from './doc';

@@ -1,7 +1,7 @@
 import { DOMOutputSpec, Node as ProseMirrorNode, NodeSpec } from 'prosemirror-model';
 import * as sl from 'prosemirror-schema-list';
 
-import { toStyleString } from 'ngx-editor/utils';
+import { toStyleString } from '@bobbyquantum/ngx-editor/utils';
 
 const doc: NodeSpec = {
   content: 'block+',

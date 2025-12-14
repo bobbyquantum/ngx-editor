@@ -1,6 +1,6 @@
 import type { EditorState, Transaction, Command } from 'prosemirror-state';
 
-import { clamp } from 'ngx-editor/utils';
+import { clamp } from '@bobbyquantum/ngx-editor/utils';
 import { InsertCommand } from './types';
 
 const indentNodeTypes = ['paragraph', 'heading', 'blockquote'];

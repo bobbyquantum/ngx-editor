@@ -1,7 +1,7 @@
 import type { NodeType } from 'prosemirror-model';
 import type { EditorState, Transaction, Command } from 'prosemirror-state';
 
-import { canInsert } from 'ngx-editor/helpers';
+import { canInsert } from '@bobbyquantum/ngx-editor/helpers';
 
 import { InsertCommand } from './types';
 

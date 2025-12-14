@@ -9,7 +9,7 @@ import {
   smartQuotes, emDash, ellipsis, InputRule,
 } from 'prosemirror-inputrules';
 
-import { markInputRule } from 'ngx-editor/helpers';
+import { markInputRule } from '@bobbyquantum/ngx-editor/helpers';
 
 interface Options {
   history: boolean;

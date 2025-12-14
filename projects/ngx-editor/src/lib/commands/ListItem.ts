@@ -2,7 +2,7 @@ import type { NodeType, Schema } from 'prosemirror-model';
 import type { EditorState, Transaction, Command } from 'prosemirror-state';
 import { liftListItem, wrapInList } from 'prosemirror-schema-list';
 
-import { isNodeActive } from 'ngx-editor/helpers';
+import { isNodeActive } from '@bobbyquantum/ngx-editor/helpers';
 
 import { ToggleCommand } from './types';
 

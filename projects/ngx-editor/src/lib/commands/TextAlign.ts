@@ -1,7 +1,7 @@
 import type { EditorState, Transaction, Command } from 'prosemirror-state';
 import type { Node } from 'prosemirror-model';
 
-import { getSelectionNodes } from 'ngx-editor/helpers';
+import { getSelectionNodes } from '@bobbyquantum/ngx-editor/helpers';
 
 import { ToggleCommand } from './types';
 

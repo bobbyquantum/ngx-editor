@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, inject, OnDestroy, OnInit } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { uniq } from 'ngx-editor/utils';
+import { uniq } from '@bobbyquantum/ngx-editor/utils';
 import { NodeSelection } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
 import { Observable, Subscription } from 'rxjs';

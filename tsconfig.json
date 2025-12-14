@@ -10,22 +10,22 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "ngx-editor": [
+      "@bobbyquantum/ngx-editor": [
         "./dist/ngx-editor"
       ],
-      "ngx-editor/utils": [
+      "@bobbyquantum/ngx-editor/utils": [
         "./dist/ngx-editor/utils"
       ],
-      "ngx-editor/schema": [
+      "@bobbyquantum/ngx-editor/schema": [
         "./dist/ngx-editor/schema"
       ],
-      "ngx-editor/commands": [
+      "@bobbyquantum/ngx-editor/commands": [
         "./dist/ngx-editor/commands"
       ],
-      "ngx-editor/input-rules": [
+      "@bobbyquantum/ngx-editor/input-rules": [
         "./dist/ngx-editor/input-rules"
       ],
-      "ngx-editor/helpers": [
+      "@bobbyquantum/ngx-editor/helpers": [
         "./dist/ngx-editor/helpers"
       ],
     },

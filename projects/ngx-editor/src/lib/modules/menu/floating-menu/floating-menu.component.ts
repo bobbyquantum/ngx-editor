@@ -8,7 +8,7 @@ import { EditorView } from 'prosemirror-view';
 import { asyncScheduler, fromEvent, Subscription } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
 
-import { NgxEditorError } from 'ngx-editor/utils';
+import { NgxEditorError } from '@bobbyquantum/ngx-editor/utils';
 import Editor from '../../../Editor';
 import { BubbleComponent } from '../bubble/bubble.component';
 

@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { uniq } from 'ngx-editor/utils';
+import { uniq } from '@bobbyquantum/ngx-editor/utils';
 import { EditorView } from 'prosemirror-view';
 import { Observable, Subscription } from 'rxjs';
 

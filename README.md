@@ -1,57 +1,44 @@
-# NgxEditor
+# @bobbyquantum/ngx-editor
 
 <p align="center">
-  <a href="https://github.com/sibiraj-s/ngx-editor">
+  <a href="https://github.com/bobbyquantum/ngx-editor">
    <img src="./sketch/ngx-editor.svg" alt="ngxEditor">
   </a>
 </p>
-<p align="center">The Rich Text Editor for Angular, Built on ProseMirror</p>
-<p align="center">
-  <a href="https://github.com/sibiraj-s/ngx-editor/actions">
-    <img alt="Tests" src="https://github.com/sibiraj-s/ngx-editor/workflows/Tests/badge.svg">
-  </a>
-  <a href="https://www.npmjs.com/package/ngx-editor">
-    <img alt="npm version" src="https://badgen.net/npm/v/ngx-editor">
-  </a>
-  <a href="https://www.npmjs.com/package/ngx-editor">
-    <img alt="npm" src="https://badgen.net/npm/dm/ngx-editor">
-  </a>
-  <a href="https://www.npmjs.com/package/ngx-editor">
-    <img alt="npm" src="https://badgen.net/npm/dt/ngx-editor">
-  </a>
-  <br />
-  <a href="https://github.com/sibiraj-s/ngx-editor/blob/master/LICENSE">
-    <img alt="licence" src="https://badgen.net/npm/license/ngx-editor">
-  </a>
-</p>
+<p align="center">The Rich Text Editor for Angular 21+ (Zoneless), Built on ProseMirror</p>
 
-> A simple rich text editor for angular applications built with ProseMirror. It is a drop in and easy-to-use editor
-> and can be easily extended using prosemirror plugins to build any additional or missing features
+> ⚠️ **This is a fork of [sibiraj-s/ngx-editor](https://github.com/sibiraj-s/ngx-editor)**
+>
+> The original project appears to be inactive. This fork has been updated to support **Angular 21** with **zoneless change detection** and modern Angular patterns. It is published under a scoped npm package for independent distribution.
+
+## What's Different
+
+- ✅ **Angular 21** support
+- ✅ **Zoneless change detection** (`provideZonelessChangeDetection()`)
+- ✅ **OnPush change detection** for all components
+- ✅ **Angular Signals** for reactive state
+- ✅ **Modern control flow** (`@if`, `@for` instead of `*ngIf`, `*ngFor`)
+- ✅ **`inject()` pattern** instead of constructor injection
+- ✅ **Ctrl/Cmd+Click** to open links in editor
 
 ## Getting Started
 
-[demo] | [edit on stackblitz][stackblitz] | [documentation] | [migrating from other editors][migration]
-
 ### Installation
 
-Install via Package managers such as [npm] or [pnpm] or [yarn]
-
 ```bash
-npm install ngx-editor
-# or
-pnpm install ngx-editor
-# or
-yarn add ngx-editor
+npm install @bobbyquantum/ngx-editor
 ```
 
 ### Usage
 
-**Note**: By default the editor comes with minimal features. Refer the [demo] and [documentation] for more details and examples.
-
-Component
+**Note**: By default the editor comes with minimal features.
 
 ```ts
-import { NgxEditorComponent, NgxEditorMenuComponent, Editor } from 'ngx-editor';
+import {
+  NgxEditorComponent,
+  NgxEditorMenuComponent,
+  Editor,
+} from '@bobbyquantum/ngx-editor';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -61,9 +48,10 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [NgxEditorComponent, NgxEditorMenuComponent, FormsModule],
 })
-export class NgxEditorComponent implements OnInit, OnDestroy {
+export class MyEditorComponent implements OnInit, OnDestroy {
   html = '';
   editor: Editor;
+
   ngOnInit(): void {
     this.editor = new Editor();
   }
@@ -78,7 +66,7 @@ Then in HTML
 
 ```html
 <div class="NgxEditor__Wrapper">
-  <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+  <ngx-editor-menu [editor]="editor"></ngx-editor-menu>
   <ngx-editor
     [editor]="editor"
     [ngModel]="html"
@@ -88,11 +76,21 @@ Then in HTML
 </div>
 ```
 
-Note: Input can be a HTML string or a jsonDoc
+### Zoneless Setup
+
+In your app config:
+
+```ts
+import { provideZonelessChangeDetection } from '@angular/core';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideZonelessChangeDetection()],
+};
+```
 
 ## Browser Compatibility
 
-Mostly works on all Evergreen-Browsers like
+Works on all Evergreen browsers:
 
 - Google Chrome
 - Microsoft Edge
@@ -100,22 +98,14 @@ Mostly works on all Evergreen-Browsers like
 - Safari
 - Opera
 
-## Collaborative Editing
-
-See https://sibiraj-s.github.io/ngx-editor/#/collab
-
 ## Icons
 
 Icons are from https://fonts.google.com/icons
 
-## Contributing
+## Original Project
 
-All contributions are welcome. See [CONTRIBUTING.md](./.github/CONTRIBUTING.md) to get started.
+This is a fork of [sibiraj-s/ngx-editor](https://github.com/sibiraj-s/ngx-editor). Full credit to the original author for the excellent foundation.
 
-[npm]: https://www.npmjs.com/
-[pnpm]: https://pnpm.io/
-[yarn]: https://yarnpkg.com/lang/en/
-[documentation]: https://sibiraj-s.github.io/ngx-editor
-[demo]: https://ngx-editor.stackblitz.io/
-[stackblitz]: https://stackblitz.com/edit/ngx-editor
-[migration]: https://sibiraj-s.github.io/ngx-editor/#/migration
+## License
+
+MIT - See [LICENSE](./LICENSE)

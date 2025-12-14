@@ -21,7 +21,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { NgxEditorError } from 'ngx-editor/utils';
+import { NgxEditorError } from '@bobbyquantum/ngx-editor/utils';
 import Editor from './Editor';
 import { emptyDoc, toHTML } from './parsers';
 import * as plugins from './plugins';

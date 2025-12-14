@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, Input, OnInit, TemplateRef } from '@angular/core';
 
 import { KeyValuePipe, NgTemplateOutlet } from '@angular/common';
-import { NgxEditorError } from 'ngx-editor/utils';
+import { NgxEditorError } from '@bobbyquantum/ngx-editor/utils';
 import Editor from '../../Editor';
 import { Toolbar, ToolbarDropdown, ToolbarItem, ToolbarLink, ToolbarLinkOptions } from '../../types';
 import { ColorPickerComponent } from './color-picker/color-picker.component';
