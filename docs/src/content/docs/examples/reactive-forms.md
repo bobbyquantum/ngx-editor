@@ -11,7 +11,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { NgxEditorModule } from 'ngx-editor';
+import { NgxEditorModule } from '@bobbyquantum/ngx-editor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +32,7 @@ export class AppModule {}
 ```ts title="app.component.ts"
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Validators } from 'ngx-editor';
+import { Validators } from '@bobbyquantum/ngx-editor';
 
 @Component({
   selector: 'app-root',
@@ -65,7 +65,7 @@ export class AppComponent implements OnInit, OnDestroy {
 ### Validators
 
 ```ts
-import { Validators } from 'ngx-editor';
+import { Validators } from '@bobbyquantum/ngx-editor';
 
 Validators.required(schema); // pass schema if you are using a custom schema else leave it empty
 Validators.maxLength(maxLength, schema);

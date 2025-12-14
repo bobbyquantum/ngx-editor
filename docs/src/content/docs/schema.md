@@ -6,12 +6,12 @@ The schema configuration can be provided using `config` property
 
 Ref: https://prosemirror.net/examples/schema/
 
-Example: https://github.com/sibiraj-s/ngx-editor/tree/master/demo
+Example: https://github.com/bobbyquantum/ngx-editor/tree/main/projects/demo
 
 ## Usage
 
 ```ts
-import { Editor } from 'ngx-editor';
+import { Editor } from '@bobbyquantum/ngx-editor';
 
 new Editor({
   schema,
@@ -23,7 +23,7 @@ new Editor({
 Ref: https://prosemirror.net/examples/schema/
 
 ```ts
-import { nodes as basicNodes, marks } from 'ngx-editor';
+import { nodes as basicNodes, marks } from '@bobbyquantum/ngx-editor';
 import { Schema, NodeSpec } from 'prosemirror-model';
 
 const codeMirror: NodeSpec = {

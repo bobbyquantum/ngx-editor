@@ -5,7 +5,7 @@ title: Shortcuts
 Enable/disable default keyboard shortcuts. Enabled by default
 
 ```ts
-import { Editor } from 'ngx-editor';
+import { Editor } from '@bobbyquantum/ngx-editor';
 
 new Editor({
   keyboardShortcuts: true,

@@ -18,7 +18,7 @@ import {
   undo,
   redo,
 } from 'y-prosemirror';
-import { Editor } from 'ngx-editor';
+import { Editor } from '@bobbyquantum/ngx-editor';
 import { keymap } from 'prosemirror-keymap';
 import { history } from 'prosemirror-history';
 

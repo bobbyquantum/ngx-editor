@@ -5,7 +5,7 @@ title: Configuration
 ### Editor
 
 ```ts
-import { Editor } from 'ngx-editor';
+import { Editor } from '@bobbyquantum/ngx-editor';
 
 editor = new Editor({
   content: '',
@@ -23,7 +23,7 @@ Options like `content`, `placeholder` and `enabled` will be overridden by option
 ### Locals
 
 ```ts
-import { schema } from 'ngx-editor/schema';
+import { schema } from '@bobbyquantum/ngx-editor/schema';
 
 NgxEditorModule.forRoot({
   locals: {
@@ -70,7 +70,7 @@ NgxEditorModule.forRoot({
     title: 'Title',
     remove: 'Remove',
     enterValidUrl: 'Please enter a valid URL',
-    required: 'This is required'
+    required: 'This is required',
   },
 });
 ```

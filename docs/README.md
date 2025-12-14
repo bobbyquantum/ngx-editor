@@ -1,14 +1,14 @@
 # docs site: built with Startlight(Astro)
 
 ```bash
-git clone https://github.com/sibiraj-s/ngx-editor # clone the repo
+git clone https://github.com/bobbyquantum/ngx-editor # clone the repo
 cd docs # navigate to docs
 npm install # install the dependencies
 npm run dev # start the dev server
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/sibiraj-s/ngx-editor/tree/master/docs)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/sibiraj-s/ngx-editor/tree/master/docs)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/bobbyquantum/ngx-editor/tree/main/docs)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/bobbyquantum/ngx-editor/tree/main/docs)
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 

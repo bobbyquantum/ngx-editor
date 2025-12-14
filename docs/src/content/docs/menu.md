@@ -106,8 +106,8 @@ import {
   NgxEditorComponent,
   NgxEditorFloatingMenuComponent,
   Editor,
-} from 'ngx-editor';
-import { isNodeActive } from 'ngx-editor/helpers';
+} from '@bobbyquantum/ngx-editor';
+import { isNodeActive } from '@bobbyquantum/ngx-editor/helpers';
 
 @Component({
   selector: 'custom-menu',

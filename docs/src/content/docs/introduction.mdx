@@ -7,7 +7,7 @@ import { TabItem, Tabs } from '@astrojs/starlight/components';
 
 ### Getting Started
 
-[demo] | [edit on stackblitz][stackblitz] | [documentation] | [migrating from other editors][migration]
+[demo] | [edit on stackblitz][stackblitz] | [documentation]
 
 ### Installation
 
@@ -17,21 +17,21 @@ Install via Package managers such as [npm] or [pnpm] or [yarn]
   <TabItem label="npm">
 
 ```bash
-npm install ngx-editor
+npm install @bobbyquantum/ngx-editor
 ```
 
   </TabItem>
   <TabItem label="pnpm">
 
 ```bash
-pnpm install ngx-editor
+pnpm install @bobbyquantum/ngx-editor
 ```
 
   </TabItem>
   <TabItem label="yarn">
 
 ```bash
-yarn add ngx-editor
+yarn add @bobbyquantum/ngx-editor
 ```
 
   </TabItem>
@@ -44,7 +44,7 @@ yarn add ngx-editor
 Import `NgxEditorComponent` and `NgxEditorMenuComponent`, then initialize the editor:
 
 ```ts
-import { NgxEditorComponent, NgxEditorMenuComponent, Editor } from 'ngx-editor';
+import { NgxEditorComponent, NgxEditorMenuComponent, Editor } from '@bobbyquantum/ngx-editor';
 
 @Component({
   selector: 'editor-component',
@@ -89,7 +89,7 @@ Note: Input can be a HTML string or a jsonDoc
 If the Input to the component is HTML, output will be HTML. To manually convert json output from the editor to html
 
 ```ts
-import { toHTML } from 'ngx-editor';
+import { toHTML } from '@bobbyquantum/ngx-editor';
 
 const html = toHTML(jsonDoc, schema); // schema is optional
 ```
@@ -97,7 +97,7 @@ const html = toHTML(jsonDoc, schema); // schema is optional
 Or to convert HTML to json. Optional, as Editor will accept HTML input
 
 ```ts
-import { toDoc } from 'ngx-editor';
+import { toDoc } from '@bobbyquantum/ngx-editor';
 
 const jsonDoc = toDoc(html);
 ```
@@ -147,7 +147,6 @@ Mostly works on all Evergreen-Browsers like
 [npm]: https://www.npmjs.com/
 [pnpm]: https://pnpm.io/
 [yarn]: https://yarnpkg.com/lang/en/
-[documentation]: https://sibiraj-s.github.io/ngx-editor
+[documentation]: https://bobbyquantum.github.io/ngx-editor
 [demo]: https://ngx-editor.stackblitz.io/
 [stackblitz]: https://stackblitz.com/edit/ngx-editor
-[migration]: https://sibiraj-s.github.io/ngx-editor/#/migration

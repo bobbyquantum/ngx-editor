@@ -15,8 +15,8 @@ Use the following config to created a full featured editor
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { NgxEditorModule, schema } from 'ngx-editor';
-import { schema } from 'ngx-editor/schema';
+import { NgxEditorModule, schema } from '@bobbyquantum/ngx-editor';
+import { schema } from '@bobbyquantum/ngx-editor/schema';
 
 @NgModule({
   imports: [
@@ -71,7 +71,7 @@ import { AppComponent } from './app/app.component';
 import { importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
-import { NgxEditorModule } from 'ngx-editor';
+import { NgxEditorModule } from '@bobbyquantum/ngx-editor';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -130,7 +130,7 @@ import {
   NgxEditorMenuComponent,
   Editor,
   Toolbar,
-} from 'ngx-editor';
+} from '@bobbyquantum/ngx-editor';
 
 @Component({
   selector: 'app-root',

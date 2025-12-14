@@ -5,8 +5,8 @@ title: Editor
 This is the core module. Create the editor and pass it to the components. The editor accepts the following options
 
 ```ts
-import { Editor } from 'ngx-editor';
-import { schema } from 'ngx-editor/schema';
+import { Editor } from '@bobbyquantum/ngx-editor';
+import { schema } from '@bobbyquantum/ngx-editor/schema';
 
 const editor = new Editor({
   content: '',

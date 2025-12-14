@@ -5,7 +5,7 @@ title: History
 ### Enable/Disable editor history support
 
 ```ts
-import { Editor } from 'ngx-editor';
+import { Editor } from '@bobbyquantum/ngx-editor';
 
 new Editor({
   history: true,

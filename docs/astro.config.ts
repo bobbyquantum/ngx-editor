@@ -3,7 +3,7 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://sibiraj-s.github.io',
+  site: 'https://bobbyquantum.github.io',
   base: '/ngx-editor',
   integrations: [
     starlight({
@@ -17,11 +17,11 @@ export default defineConfig({
         {
           icon: 'github',
           label: 'GitHub',
-          href: 'https://github.com/sibiraj-s/ngx-editor',
+          href: 'https://github.com/bobbyquantum/ngx-editor',
         },
       ],
       editLink: {
-        baseUrl: 'https://github.com/sibiraj-s/ngx-editor/tree/master/docs/',
+        baseUrl: 'https://github.com/bobbyquantum/ngx-editor/tree/main/docs/',
       },
       pagination: true,
       lastUpdated: true,
@@ -52,16 +52,6 @@ export default defineConfig({
             { label: 'Floating Menu', link: '/examples/floating-menu' },
             { label: 'CodeMirror', link: '/examples/codemirror' },
             { label: 'Mentions & Tags', link: '/examples/mentions' },
-          ],
-        },
-        {
-          label: 'Migrations',
-          items: [
-            { label: 'From v4 or other editors to v5/v6', link: '/migrations/migration' },
-            { label: 'v5 to v6', link: '/migrations/migration-5-6' },
-            { label: 'v6 to v7', link: '/migrations/migration-6-7' },
-            { label: 'v7 to v8', link: '/migrations/migration-7-8' },
-            { label: 'v8 to v9', link: '/migrations/migration-8-9' },
           ],
         },
       ],

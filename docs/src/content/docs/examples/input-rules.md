@@ -7,7 +7,7 @@ Some default input rules based on schema is enabled by defualt
 ### Config
 
 ```ts
-import { Editor } from 'ngx-editor';
+import { Editor } from '@bobbyquantum/ngx-editor';
 
 new Editor({
   inputRules: true,
