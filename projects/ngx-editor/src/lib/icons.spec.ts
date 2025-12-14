@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -20,6 +20,7 @@ describe('NgxEditorModule', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
+      providers: [provideZonelessChangeDetection()],
       imports: [
         NgxEditorModule.forRoot({
           icons: {

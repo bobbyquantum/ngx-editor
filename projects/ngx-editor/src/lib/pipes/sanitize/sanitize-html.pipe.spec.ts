@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 
@@ -7,6 +8,7 @@ describe('SanitizeHtmlPipe', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [
+        provideZonelessChangeDetection(),
         BrowserModule,
       ],
     }).compileComponents();
