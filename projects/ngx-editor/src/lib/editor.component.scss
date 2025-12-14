@@ -122,6 +122,15 @@ $pointer-style: var(--ngx-editor-click-pointer, default);
     margin-left: 0;
     margin-right: 0;
   }
+
+  a {
+    color: $menu-item-active-color;
+    text-decoration: underline;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 .NgxEditor__Content--Disabled {
