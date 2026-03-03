@@ -13,6 +13,16 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## 21.0.0 (2026-03-03)
+
+#### Breaking Changes
+
+- requires angular v21 or greater
+
+#### Enhancements
+
+- promote `21.0.0-beta.1` to stable `21.0.0`
+
 ## 19.0.0-beta.1 (2025-04-26)
 
 #### Breaking Changes
