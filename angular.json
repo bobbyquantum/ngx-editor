@@ -10,7 +10,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "project": "projects/ngx-editor/ng-package.json"
           },
@@ -25,7 +25,7 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "projects/ngx-editor/tsconfig.spec.json",
             "polyfills": []
@@ -54,14 +54,16 @@
       "sourceRoot": "projects/demo/src",
       "prefix": "app",
       "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:application",
-          "options": {
-            "outputPath": "dist/demo",
-            "index": "projects/demo/src/index.html",
-            "browser": "projects/demo/src/main.ts",
-            "polyfills": [],
-            "tsConfig": "projects/demo/tsconfig.app.json",
+          "build": {
+            "builder": "@angular/build:application",
+            "options": {
+              "outputPath": "dist/demo",
+              "index": "projects/demo/src/index.html",
+              "browser": "projects/demo/src/main.ts",
+              "server": "projects/demo/src/server.ts",
+              "ssr": true,
+              "polyfills": [],
+              "tsConfig": "projects/demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
@@ -99,7 +101,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
               "buildTarget": "demo:build:production"
@@ -111,10 +113,10 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
+          "builder": "@angular/build:extract-i18n"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:karma",
           "options": {
             "polyfills": [],
             "tsConfig": "projects/demo/tsconfig.spec.json",

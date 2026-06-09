@@ -11,7 +11,9 @@ const browserDistFolder = resolve(serverDistFolder, '../browser');
 const indexHtml = join(serverDistFolder, 'index.server.html');
 
 const app = express();
-const commonEngine = new CommonEngine();
+const commonEngine = new CommonEngine({
+  allowedHosts: ['localhost'],
+});
 
 /**
  * Example Express Rest API endpoints can be defined here.
