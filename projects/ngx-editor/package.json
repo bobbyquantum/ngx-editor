@@ -1,6 +1,6 @@
 {
   "name": "@bobbyquantum/ngx-editor",
-  "version": "21.0.0",
+  "version": "22.0.0",
   "description": "The Rich Text Editor for Angular, Built on ProseMirror (Zoneless Fork)",
   "license": "MIT",
   "type": "module",
@@ -14,14 +14,14 @@
     "ngx-editor",
     "prosemirror",
     "zoneless",
-    "angular-21"
+    "angular-22"
   ],
   "sideEffects": false,
   "peerDependencies": {
-    "@angular/common": ">=21.0.0",
-    "@angular/core": ">=21.0.0",
-    "@angular/forms": ">=21.0.0",
-    "@angular/platform-browser": ">=21.0.0",
+    "@angular/common": ">=22.0.0",
+    "@angular/core": ">=22.0.0",
+    "@angular/forms": ">=22.0.0",
+    "@angular/platform-browser": ">=22.0.0",
     "rxjs": ">=7.8.0"
   },
   "dependencies": {
