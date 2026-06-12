@@ -13,6 +13,16 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## 22.0.0 (2026-06-12)
+
+#### Breaking Changes
+
+- requires angular v22 or greater
+
+#### Internal
+
+- migrate builders to `@angular/build` and update SSR bootstrap for Angular 22 ([#1](https://github.com/bobbyquantum/ngx-editor/pull/1))
+
 ## 21.0.0 (2026-03-03)
 
 #### Breaking Changes
