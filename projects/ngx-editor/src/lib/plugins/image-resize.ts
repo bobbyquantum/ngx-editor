@@ -94,12 +94,6 @@ class ImageRezieView implements NodeView {
   }
 
   selectNode(): void {
-    // Defer the signal write to a microtask. ProseMirror calls selectNode()
-    // synchronously inside dispatchTransaction, which runs during Angular's
-    // change detection cycle. Writing to the `selected` signal mid-CD triggers
-    // NG0100 ("ExpressionChangedAfterItHasBeenChecked"). Scheduling the write
-    // on a microtask lets the current CD cycle finish before the signal update
-    // re-renders the ImageViewComponent (OnPush + signal-based).
     queueMicrotask(() => this.imageComponentRef.instance.selected.set(true));
   }
 
