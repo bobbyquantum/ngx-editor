@@ -1,6 +1,6 @@
 {
   "name": "@bobbyquantum/ngx-editor",
-  "version": "22.0.0",
+  "version": "22.0.1",
   "description": "The Rich Text Editor for Angular, Built on ProseMirror (Zoneless Fork)",
   "license": "MIT",
   "type": "module",
