@@ -13,6 +13,12 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## 22.0.1 (2026-08-01)
+
+#### Bug Fixes
+
+- defer `selectNode`/`deselectNode` signal write to a microtask to prevent NG0100 (ExpressionChangedAfterItHasBeenChecked) in consumers using zone-based change detection ([#2](https://github.com/bobbyquantum/ngx-editor/pull/2))
+
 ## 22.0.0 (2026-06-12)
 
 #### Breaking Changes
