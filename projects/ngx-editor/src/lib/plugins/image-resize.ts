@@ -94,11 +94,11 @@ class ImageRezieView implements NodeView {
   }
 
   selectNode(): void {
-    this.imageComponentRef.instance.selected.set(true);
+    queueMicrotask(() => this.imageComponentRef.instance.selected.set(true));
   }
 
   deselectNode(): void {
-    this.imageComponentRef.instance.selected.set(false);
+    queueMicrotask(() => this.imageComponentRef.instance.selected.set(false));
   }
 
   destroy(): void {
